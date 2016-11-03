@@ -1,0 +1,111 @@
+<div class="col-xs-12">
+  <h3 class="col-xs-6 marginless" ng-if="taskCtrl.editing.id != null">Edit Task</h3>
+  <h3 class="col-xs-6 marginless" ng-if="taskCtrl.editing.id == null">New Task</h3>
+  <div class="col-xs-6">
+    <button class="btn btn-md btn-primary pull-right" ng-click="taskCtrl.template = 'list'">
+      <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back To List
+    </button>
+  </div>
+  <hr>
+</div>
+
+<div class="col-xs-offset-3 col-xs-6">
+  <md-card>
+    <md-card-header>
+      <md-card-header-text>
+        <div class="row">
+          <span class="md-subhead col-xs-12">
+            <i>Enter Task Details</i>
+            <span class="md-title paddingless pull-right" ng-bind="taskCtrl.editing.id"></span>
+          </span>
+        </div>
+      </md-card-header-text>
+    </md-card-header>
+
+    <md-divider></md-divider>
+
+    <md-card-content>
+      <md-content layout-padding>
+        <div>
+          <form name="taskForm">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Task Name</label>
+              <input name="name" ng-model="taskCtrl.editing.name" placeholder="Enter a name" required>
+              <div ng-messages="taskForm.name.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Name is required</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Execution Path</label>
+              <input name="path" ng-model="taskCtrl.editing.path" placeholder="Enter a path" required>
+              <div ng-messages="taskForm.path.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Path is required</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Arguments</label>
+              <input name="arguments" ng-model="taskCtrl.editing.arguments" 
+                     placeholder="Enter arguments if any, separated by space">
+            </md-input-container>
+
+            <div class="col-xs-5 paddingless input-contrainer-margins">
+              <label>Start Time</label>
+              <div class="input-group">
+                <input datetime-picker date-format="dd-MM-yyyy HH:mm:ss" ng-model="taskCtrl.editing.start_time" 
+                       required class="form-control" placeholder="Start Time" aria-describedby="basic-addon2">
+                <span class="input-group-addon" id="basic-addon2">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="col-xs-offset-2 col-xs-5 paddingless input-contrainer-margins">
+              <label>End Time</label>
+              <div class="input-group">
+                <input datetime-picker date-format="dd-MM-yyyy HH:mm:ss" ng-model="taskCtrl.editing.end_time" 
+                       required class="form-control" placeholder="End Time" aria-describedby="basic-addon2">
+                <span class="input-group-addon" id="basic-addon2">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="col-xs-5 input-contrainer-margins paddingless">
+              <label>Weekdays</label>
+              <md-select ng-model="taskCtrl.editing.weekdays" placeholder="Weekdays"
+                         data-md-container-class="selectdemoSelectHeader"
+                         multiple>
+                <md-option ng-value="weekday" ng-repeat="weekday in taskCtrl.weekdays">
+                  {{weekday}}
+                </md-option>
+              </md-select>
+            </div>
+
+            <div class="col-xs-offset-2 col-xs-5 input-contrainer-margins paddingless">
+              <label>Agent</label>
+              <md-select ng-model="taskCtrl.editing.agent_id" placeholder="Agent">
+                <md-option ng-repeat="id in taskCtrl.agents" value="{{id}}">
+                  {{id}}
+                </md-option>
+              </md-select>
+            </div>
+          </form>
+        </div>
+      </md-content>
+    </md-card-content>
+
+    <md-divider></md-divider>
+    <md-card-header>
+      <md-card-header-text>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+          <button class="btn btn-md btn-primary col-xs-6"
+                  ng-click="taskCtrl.editing.id != null ? taskCtrl.update(row.id) : taskCtrl.create()">
+            Save
+          </button>
+        </section>
+      </md-card-header-text>
+    </md-card-header>
+  </md-card>
+</div>

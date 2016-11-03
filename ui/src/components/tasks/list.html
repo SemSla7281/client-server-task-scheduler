@@ -1,0 +1,15 @@
+<div class="col-xs-12">
+  <h3 class="col-xs-6 marginless">Task List</h3>
+  <div class="col-xs-6">
+    <button class="btn btn-md btn-primary pull-right" ng-click="taskCtrl.new()">
+      <i class="fa fa-plus"> Add Task</i>
+    </button>
+  </div>
+  <hr>
+</div>
+
+<div class="col-xs-12" ng-repeat="row in taskCtrl.rows">
+  <div ng-include="'src/components/tasks/card.html'"></div>
+</div>
+
+<div ng-include="'src/shared/templates/missingData.html'" ng-if="taskCtrl.rows.length == 0"></div>

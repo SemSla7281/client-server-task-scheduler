@@ -1,0 +1,6 @@
+development:
+  api: http://localhost:3000/api
+  redis:
+    host: localhost
+    port: 6379
+    namespace: tasks

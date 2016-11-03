@@ -1,0 +1,65 @@
+<md-card>
+  <div class="col-xs-12 paddingless">
+    <md-card-header>
+      <md-card-header-text>
+        <span class="md-subhead">
+          <i ng-bind="row.name"></i>
+          <span class="md-subhead pull-right">
+            <label class="label label-lg {{taskCtrl.statusLabel(row.status)}}" 
+                   ng-bind="row.status"></label>
+          </span>
+        </span>
+      </md-card-header-text>
+    </md-card-header>
+  </div>
+  <md-divider></md-divider>
+
+  <md-card-header>
+    <md-card-header-text>
+      <span>
+        <div class="col-xs-2 paddingless">
+          <span class="md-subhead col-xs-12 paddingless">
+            <label class="col-xs-4 paddingless">ID</label>
+            <span class="col-xs-8" ng-bind="row.id"></span>
+          </span>
+          <span class="md-subhead col-xs-12 paddingless">
+            <label class="col-xs-4 paddingless">Agent ID</label>
+            <span class="col-xs-8" ng-bind="row.agent_id"></span>
+          </span>
+        </div>
+        <div class="col-xs-4 paddingless">
+          <span class="md-subhead col-xs-12 paddingless">
+            <label class="col-xs-4 paddingless">Start Time</label>
+            <span class="col-xs-8">{{ row.start_time | date:'yyyy-MM-dd HH:mm:ss Z' }}</span>
+          </span>
+          <span class="md-subhead col-xs-12 paddingless">
+            <label class="col-xs-4 paddingless">End Time</label>
+            <span class="col-xs-8">{{ row.end_time | date:'yyyy-MM-dd HH:mm:ss Z' }}</span>
+          </span>
+          <span class="md-subhead col-xs-12 paddingless">
+            <label class="col-xs-4 paddingless">Weekdays</label>
+            <span class="col-xs-8" ng-bind="row.weekdays"></span>
+          </span>
+        </div>
+        <div class="col-xs-4 paddingless">
+          <span class="md-subhead col-xs-12 paddingless">
+            <label class="col-xs-3 paddingless">Execute</label>
+            <span class="col-xs-9" ng-bind="row.path"></span>
+          </span>
+          <span class="md-subhead col-xs-12 paddingless">
+            <label class="col-xs-3 paddingless">Arguments</label>
+            <span class="col-xs-9" ng-bind="row.arguments"></span>
+          </span>
+        </div>
+        <div class="col-xs-2 paddingless">
+          <button class="btn btn-sm btn-default col-xs-offset-5 col-xs-4" ng-click="taskCtrl.edit(row)">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+          </button>
+          <button class="btn btn-sm btn-default col-xs-offset-1 col-xs-2" ng-click="taskCtrl.delete(row)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </div>
+      </span>
+    </md-card-header-text>
+  </md-card-header>
+</md-card>
